@@ -1,15 +1,25 @@
 import { useEffect, useState } from "react";
+import { useContext } from "react";
+
+import ProductsContext from '../contexts/ProductsContext.jsx'
+import BudgetModeContext from "../contexts/BudgetModeContext.jsx";
+
+import LoadingPage from "../components/LoadingPage/LoadingPage";
+
 import ProductCard from "../components/ProductCard";
 import MainFilterBox from "../components/MainFilterBox";
 
-import ProductsContext from '../contexts/ProductsContext.jsx'
 
 export default function ProductsPage({ titlePage }) {
 
   const urlApi = "https://fakestoreapi.com/products"
 
+  const [loading, setLoading] = useState(true);
+
   const [products, setProducts] = useState([]);
   const [renderList, setRenderList] = useState([]);
+
+  const [budgetMode, setBudegetMode] = useState(false);
 
   function getProductsUrl(url) {
     fetch(url)
@@ -18,16 +28,21 @@ export default function ProductsPage({ titlePage }) {
         setProducts(data)
         setRenderList(data)
       })
+      .finally(() => setLoading(false))
   }
 
   useEffect(() => {
     getProductsUrl(urlApi)
   }, [])
 
+
+  if (loading) { return <LoadingPage /> }
+
+
   return (
     <>
 
-      <ProductsContext.Provider value={{ products, setProducts, renderList, setRenderList }} >
+      <ProductsContext.Provider value={{ products, setProducts, renderList, setRenderList, budgetMode, setBudegetMode }} >
         <div className="container mt-2 p-1">
           <section>
             <p>{titlePage} page</p>

@@ -6,7 +6,7 @@ import ProductsContext from "../contexts/ProductsContext"
 
 export default function MainFilterBox() {
 
-  const { setRenderList, products } = useContext(ProductsContext)
+  const { setRenderList, products, price, setPrice, budgetMode, setBudegetMode } = useContext(ProductsContext)
 
   function selectedGenre(e) {
     setSelectGenre(e.target.value)
@@ -21,6 +21,12 @@ export default function MainFilterBox() {
     }
   }
 
+  function findPrice(inputValue) {
+    if (inputValue === 0) {
+      setPrice(products)
+    }
+  }
+
   return (
     <>
       <div className="row d-flex justify-content-center m-4">
@@ -30,7 +36,21 @@ export default function MainFilterBox() {
         <div className="col-md-2 text-center">
           <FormInputText onFindTitle={findTitle} />
         </div>
-      </div>
+        <div className="col-md-2 text-center">
+          <div className="btn-budget-mode">
+            <p>Budget Mode</p>
+            <i className={`bi bi-toggle-${budgetMode ? "on" : "off"}`} onClick={() => {
+              if (budgetMode) { setBudegetMode(false) }
+              else { setBudegetMode(true) }
+            }}></i>
+          </div>
+        </div>
+        <div className="col-md-2 text-center">
+          {
+            budgetMode ? <FormInputText onFindTitle={findTitle} /> : <></>
+          }
+        </div>
+      </div >
     </>
   )
 }
