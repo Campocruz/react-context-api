@@ -1,0 +1,38 @@
+.jumbotron {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  margin: 3rem auto;
+
+  border: 1px solid black;
+  border-radius: 1rem;
+  box-shadow: 0 12px 2px rgba(0, 0, 0, 0.5);
+
+  max-width: 40rem;
+  min-height: 15rem;
+
+  text-align: center;
+
+  padding: 1.5rem;
+}
+
+.jum-title {
+  padding: 0.5rem;
+  color: blue;
+}
+
+.jum-description {
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.jum-btn {
+
+
+  button {
+    padding: 0.5rem;
+    background-color: azure;
+    border-radius: 1rem;
+  }
+}

@@ -1,0 +1,84 @@
+@import url('bootstrap');
+@import url('bootstrap-icons');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  height: 10dvh;
+
+  .navbar {
+    height: 100%;
+  }
+}
+
+main {
+
+  .card {
+    margin: 1rem;
+    width: 90%;
+    height: 460px;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+    transition: transform 0.2s ease;
+
+    .card-header {
+
+      h6 {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    .card-body {
+
+      .product-img {
+        width: 100%;
+        height: 160px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      .description {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+      }
+
+      .product-detail {}
+    }
+  }
+
+  .card:hover {
+    transition: translateY(-4px);
+  }
+}
+
+
+.btn-page {
+  width: 9rem;
+}
+
+
+footer {
+  height: 10dvh;
+
+  .row {
+    width: 100%;
+    height: 100%;
+  }
+}
