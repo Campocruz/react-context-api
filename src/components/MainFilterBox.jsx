@@ -3,10 +3,11 @@ import FormInputText from "./FormInputText"
 
 import { useContext } from "react"
 import ProductsContext from "../contexts/ProductsContext"
+import FormInputPrice from "./FormInputPrice"
 
 export default function MainFilterBox() {
 
-  const { setRenderList, products, price, setPrice, budgetMode, setBudegetMode } = useContext(ProductsContext)
+  const { setRenderList, products, budgetMode, setBudegetMode } = useContext(ProductsContext)
 
   function selectedGenre(e) {
     setSelectGenre(e.target.value)
@@ -22,8 +23,11 @@ export default function MainFilterBox() {
   }
 
   function findPrice(inputValue) {
-    if (inputValue === 0) {
-      setPrice(products)
+    if (inputValue == 0 || inputValue == "") {
+      setRenderList(products)
+    } else {
+      const filteredTitle = products.filter((product) => product.price <= inputValue)
+      setRenderList(filteredTitle)
     }
   }
 
@@ -47,7 +51,7 @@ export default function MainFilterBox() {
         </div>
         <div className="col-md-2 text-center">
           {
-            budgetMode ? <FormInputText onFindTitle={findTitle} /> : <></>
+            budgetMode ? <FormInputPrice onFindValue={findPrice} /> : <></>
           }
         </div>
       </div >
