@@ -35,9 +35,7 @@ export default function ProductsPage({ titlePage }) {
     getProductsUrl(urlApi)
   }, [])
 
-
   if (loading) { return <LoadingPage /> }
-
 
   return (
     <>
