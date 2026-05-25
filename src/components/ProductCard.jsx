@@ -1,6 +1,10 @@
 import { Link } from "react-router";
 
+import { useFavourite } from "../contexts/FavouriteContext";
+
 export default function ProductCard({ product }) {
+
+  const { toggleFavorite, isFavorite } = useFavourite()
 
   return (
     <>
@@ -24,6 +28,12 @@ export default function ProductCard({ product }) {
               <li><strong>Prezzo: </strong>{product.price}&euro;</li>
             </ul>
           </section>
+        </div>
+        <div className="card-footer">
+          <div className="d-flex justify-content-between">
+            <button className="btn"><i className="bi bi-cart-plus"></i></button>
+            <button className="btn" onClick={() => (toggleFavorite(product.id))}><i className={`bi bi-heart${isFavorite(product.id) ? "-fill" : ""}`}></i></button>
+          </div>
         </div>
       </div>
     </>

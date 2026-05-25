@@ -5,7 +5,7 @@ const BudgetModeContext = createContext();
 
 function BudgetModeProvider({ children }) {
 
-  const [budgetMode, setBudgetMode] = useState(true);
+  const [budgetMode, setBudgetMode] = useState(false);
   const [budgetList, setBudgetList] = useState([])
 
   function toggleMode() {
@@ -14,7 +14,7 @@ function BudgetModeProvider({ children }) {
 
   return (
     <>
-      <BudgetModeContext.Provider value={budgetMode, toggleMode}>
+      <BudgetModeContext.Provider value={{ budgetMode, toggleMode }}>
         {children}
       </BudgetModeContext.Provider>
     </>
@@ -26,6 +26,4 @@ function useBudgetMode() {
   return context;
 }
 
-export { BudgetModeProvider, useBudgetMode }                      
-§à                                                                       .l    k,.llllllllllll,kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk,
-              ò  utjr4èbàòghght                           mààò.lll +ù                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  80
+export { BudgetModeProvider, useBudgetMode }

@@ -7,6 +7,7 @@ import LoadingPage from "../components/LoadingPage/LoadingPage";
 import ProductCard from "../components/ProductCard";
 import MainFilterBox from "../components/MainFilterBox";
 import { BudgetModeProvider } from "../contexts/BudgetModeContext.jsx";
+import { FavouriteProvider } from "../contexts/FavouriteContext.jsx";
 
 
 export default function ProductsPage({ titlePage }) {
@@ -39,27 +40,31 @@ export default function ProductsPage({ titlePage }) {
     <>
       <ProductsContext.Provider value={{ products, setProducts, renderList, setRenderList }} >
         <BudgetModeProvider>
-          <div className="container p-1" >
-            <section>
-              <div className="row align-items-end">
-                <div className="col-12">
-                  <MainFilterBox />
-                </div>
-              </div>
-              <div className="col-1 text-center">
-                <p>{renderList.length} item</p>
-              </div>
-            </section>
-            <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4">
-              {
-                renderList?.map(item => (
-                  <div key={item.id} className="col">
-                    <ProductCard product={item} />
+          <FavouriteProvider>
+            <div className="container p-1" >
+              <section className="box-filter">
+                <div className="row align-items-end">
+                  <div className="col-12">
+                    <MainFilterBox />
                   </div>
-                ))
-              }
+                </div>
+                <div className="col-1 text-center">
+                  <p>{renderList.length} item</p>
+                </div>
+              </section>
+              <section className="box-card">
+                <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+                  {
+                    renderList?.map(item => (
+                      <div key={item.id} className="col">
+                        <ProductCard product={item} />
+                      </div>
+                    ))
+                  }
+                </div>
+              </section>
             </div>
-          </div>
+          </FavouriteProvider>
         </BudgetModeProvider>
       </ProductsContext.Provider>
     </>

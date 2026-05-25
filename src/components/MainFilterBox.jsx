@@ -7,6 +7,8 @@ import FormInputText from "./FormInputText"
 import ProductsContext from "../contexts/ProductsContext"
 import FormInputPrice from "./FormInputPrice"
 
+import './mainFilterBox.css'
+
 export default function MainFilterBox() {
 
   const { setRenderList, products } = useContext(ProductsContext)
@@ -37,28 +39,30 @@ export default function MainFilterBox() {
 
   return (
     <>
-      <div className="row d-flex justify-content-center m-4">
-        <div className="col-md-2 text-center">
-          <MainSelectList productsList={products} onFindTitle={findTitle} />
-        </div>
-        <div className="col-md-2 text-center">
-          <FormInputText onFindTitle={findTitle} />
-        </div>
-        {
-          budgetMode ? (
-            <div className="col-md-2 text-center">
-              <FormInputPrice onFindValue={findPrice} />
-            </div>
-          ) :
-            <></>
-        }
-        <div className="col-md-2 text-center">
-          <div className="btn-budget-mode">
-            <p>Budget Mode</p>
-            <i className={`bi bi-toggle-${budgetMode ? "on" : "off"}`} onClick={() => toggleMode()}></i>
+      <div className="container bg-body text-body pt-2">
+        <div className="row d-flex justify-content-center">
+          <div className="col-md-2 text-center">
+            <MainSelectList productsList={products} onFindTitle={findTitle} />
           </div>
-        </div>
-      </div >
+          <div className="col-md-2 text-center">
+            <FormInputText onFindTitle={findTitle} />
+          </div>
+          {
+            budgetMode ? (
+              <div className="col-md-2 text-center">
+                <FormInputPrice onFindValue={findPrice} />
+              </div>
+            ) :
+              <></>
+          }
+          <div className="col-md-2 text-center">
+            <div className="btn-budget-mode">
+              <p>Budget Mode</p>
+              <i className={`bi bi-toggle-${budgetMode ? "on" : "off"}`} onClick={() => toggleMode()}></i>
+            </div>
+          </div>
+        </div >
+      </div>
     </>
   )
 }

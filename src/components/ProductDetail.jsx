@@ -1,4 +1,8 @@
+import { useFavourite } from "../contexts/FavouriteContext"
+
 export default function ProductDetail({ detail, nav }) {
+
+  const { toggleFavorite, isFavorite } = useFavourite()
 
   return (
     <>
@@ -30,6 +34,10 @@ export default function ProductDetail({ detail, nav }) {
               <li><strong>Count: </strong>{detail.rating.count}</li>
               <li><strong>Prezzo: </strong>{detail.price}&euro;</li>
             </ul>
+            <div className="d-flex justify-content-between">
+              <button className="btn"><i className="bi bi-cart-plus"></i></button>
+              <button className="btn" onClick={() => (toggleFavorite(detail.id))}><i className={`bi bi-heart${isFavorite(detail.id) ? "-fill" : ""}`}></i></button>
+            </div>
           </div>
           <div className="col-8 mt-4">
             <h4>Descrizione</h4>

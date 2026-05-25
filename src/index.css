@@ -11,11 +11,21 @@
 
 main {
 
+  .box-filter {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-radius: 2rem;
+  }
+
+  .box-card {}
+
   .card {
     margin: 1rem;
     width: 100%;
     max-width: 300px;
-    height: 460px;
+    height: 100%;
+    max-height: 530px;
     border-radius: 1rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
     transition: transform 0.2s ease;
@@ -50,14 +60,15 @@ main {
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-                                                                                                              gb                                        vvvvvvvvvvvvvvvvvvvvnhgnbvbg                                           gbg hnvb                                                                                                                                                                                                                                       bbb bf                                                                                bgujbbh                                                                                                    nv bbbbbbbbbbbbbbbvcbhbb9y                                             hhhhhhhh666666666666666666666666666666666666666666666667ggggggh,,+                                                                                                                        7777777cccccccccdfklodkm,3d333,kmlferm,lkvchyyevb c nnnnnnnnnnnnnnnnnnnnjkvjffffffffffvgmn bnjvv 3ermjnu3erh4furjh84
-                                                                                                              
-                                                                                                              lòpjjllh
-                                                                                                              webkit-line-clamp: 4;
+        -webkit-line-clamp: 4;
         -webkit-box-orient: vertical;
       }
 
-      99999.product-detail {}
+      .product-detail {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 

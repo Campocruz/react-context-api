@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router";
 import LoadingPage from "../components/LoadingPage/LoadingPage";
 import ProductDetail from "../components/ProductDetail";
 
+import { FavouriteProvider } from "../contexts/FavouriteContext";
+
 export default function ProductDetailPage() {
 
   const { id } = useParams();
@@ -34,6 +36,12 @@ export default function ProductDetailPage() {
 
   if (loading) { return <LoadingPage /> }
 
-  return <ProductDetail detail={productDetail} nav={navigate} />
+  return (
+    <>
+      <FavouriteProvider>
+        <ProductDetail detail={productDetail} nav={navigate} />
+      </FavouriteProvider>
+    </>
+  )
 
 }
