@@ -2,8 +2,8 @@ export default function ProductDetail({ detail, nav }) {
 
   return (
     <>
-      <div className="container">
-        <div className="row mt-4">
+      <div className="container p-5">
+        <div className="row">
           <div className="col-8">
             <h3>{detail.title}</h3>
           </div>

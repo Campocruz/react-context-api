@@ -1,13 +1,17 @@
+import { useContext } from "react"
+
+import { useBudgetMode } from "../contexts/BudgetModeContext"
+
 import MainSelectList from "./MainSelectList"
 import FormInputText from "./FormInputText"
-
-import { useContext } from "react"
 import ProductsContext from "../contexts/ProductsContext"
 import FormInputPrice from "./FormInputPrice"
 
 export default function MainFilterBox() {
 
-  const { setRenderList, products, budgetMode, setBudegetMode } = useContext(ProductsContext)
+  const { setRenderList, products } = useContext(ProductsContext)
+
+  const { budgetMode, toggleMode } = useBudgetMode();
 
   function selectedGenre(e) {
     setSelectGenre(e.target.value)
@@ -40,19 +44,19 @@ export default function MainFilterBox() {
         <div className="col-md-2 text-center">
           <FormInputText onFindTitle={findTitle} />
         </div>
+        {
+          budgetMode ? (
+            <div className="col-md-2 text-center">
+              <FormInputPrice onFindValue={findPrice} />
+            </div>
+          ) :
+            <></>
+        }
         <div className="col-md-2 text-center">
           <div className="btn-budget-mode">
             <p>Budget Mode</p>
-            <i className={`bi bi-toggle-${budgetMode ? "on" : "off"}`} onClick={() => {
-              if (budgetMode) { setBudegetMode(false) }
-              else { setBudegetMode(true) }
-            }}></i>
+            <i className={`bi bi-toggle-${budgetMode ? "on" : "off"}`} onClick={() => toggleMode()}></i>
           </div>
-        </div>
-        <div className="col-md-2 text-center">
-          {
-            budgetMode ? <FormInputPrice onFindValue={findPrice} /> : <></>
-          }
         </div>
       </div >
     </>

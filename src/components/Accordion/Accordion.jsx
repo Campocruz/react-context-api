@@ -1,14 +1,10 @@
-import { useGlobal } from '../../contexts/GlobalContext'
-import { useState } from 'react';
 import './accordion.css'
 
 export default function Accordion() {
 
-  const { theme, toggleTheme } = useGlobal();
-
   return (
     <>
-      <div className="accordion accordion-flush" id="accordionFlushExample" data-bs-theme={theme}>
+      <div className="accordion accordion-flush" id="accordionFlushExample">
         <div className="accordion-item">
           <h2 className="accordion-header">
             <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">

@@ -1,0 +1,11 @@
+header {
+
+  .nav {
+    max-height: 10vh;
+
+  }
+}
+
+.btn-theme {
+  font-size: 2rem;
+}
