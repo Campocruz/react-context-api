@@ -1,6 +1,9 @@
+import { useGlobal } from './contexts/GlobalContext.jsx'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router'
+
+import { GlobalProvider } from "./contexts/GlobalContext.jsx";
 
 // Import Bootstrap and CSS
 import * as bootstrap from 'bootstrap'
@@ -21,22 +24,24 @@ import PageNotFound from './pages/PageNotFound.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route element={<DefaultLayout />}>
-          <Route path='/' element={<HomePage titlePage={"Home Page"} />} />
+    <GlobalProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<DefaultLayout />}>
+            <Route path='/' element={<HomePage titlePage={"Home Page"} />} />
 
-          <Route path='/products' element={<ProductsPage titlePage={"Products"} />} />
-          <Route path='/products/:id' element={<ProductDetailPage />} />
+            <Route path='/products' element={<ProductsPage titlePage={"Products"} />} />
+            <Route path='/products/:id' element={<ProductDetailPage />} />
 
-          <Route path='/about' element={<AboutPage titlePage={"about"} />} />
+            <Route path='/about' element={<AboutPage titlePage={"about"} />} />
 
-          <Route path='/rickmorty' element={<RickMortyPage />} />
-          <Route path="/personality/:id" element={<PersonalityPage />} />
+            <Route path='/rickmorty' element={<RickMortyPage />} />
+            <Route path="/personality/:id" element={<PersonalityPage />} />
 
-          <Route path="*" element={<PageNotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+            <Route path="*" element={<PageNotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </GlobalProvider>
   </StrictMode>,
 )

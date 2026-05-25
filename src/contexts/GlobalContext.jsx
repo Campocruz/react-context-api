@@ -5,8 +5,6 @@ const GlobalContext = createContext()
 
 function GlobalProvider({ children }) {
 
-  const [count, setCount] = useState(0);
-
   const [theme, setTheme] = useState('dark')
 
   function toggleTheme() {
@@ -15,7 +13,7 @@ function GlobalProvider({ children }) {
 
   return (
     <>
-      <GlobalContext.Provider value={{ count, setCount, theme, toggleTheme }}>
+      <GlobalContext.Provider value={{ theme, toggleTheme }}>
         {children}
       </GlobalContext.Provider>
     </>
